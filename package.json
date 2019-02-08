@@ -1,22 +1,22 @@
 {
   "name": "metalsmith-assets",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Include static assets in your Metalsmith build",
   "main": "index.js",
   "scripts": {
     "test": "make test"
   },
   "dependencies": {
-    "merge": "^1.1.3",
-    "recursive-readdir": "^1.0.0",
-    "stat-mode": "^0.2.0",
-    "debug": "^2.1.1",
-    "async": "^0.9.0"
+    "merge": "^1.2.1",
+    "recursive-readdir": "^2.2.2",
+    "stat-mode": "^0.2.2",
+    "debug": "^4.1.1",
+    "async": "^2.6.1"
   },
   "devDependencies": {
-    "mocha": "^2.1.0",
-    "metalsmith": "^1.3.0",
-    "assert-dir-equal": "^1.0.1"
+    "mocha": "^5.2.0",
+    "metalsmith": "^2.3.0",
+    "assert-dir-equal": "^1.1.0"
   },
   "repository": {
     "type": "git",
