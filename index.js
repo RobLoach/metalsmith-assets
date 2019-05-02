@@ -1,10 +1,10 @@
-var debug = require('debug')('metalsmith-assets');
-var fs = require('fs');
-var path = require('path');
-var readdir = require('recursive-readdir');
-var Mode = require('stat-mode');
-var merge = require('merge');
-var each = require('async').each;
+const fs = require('fs');
+const path = require('path');
+const debug = require('debug')('metalsmith-assets');
+const readdir = require('recursive-readdir');
+const statMode = require('stat-mode');
+const merge = require('merge');
+const {each} = require('async');
 
 /**
  * Expose `assets`.
@@ -15,7 +15,7 @@ module.exports = assets;
 /**
  * Default plugin options
  */
-var defaults = {
+const defaults = {
   source: './public',
   destination: '.'
 };
@@ -26,43 +26,48 @@ var defaults = {
  * @param {Object} options (optional)
  *   @property {String} source Path to copy static assets from (relative to working directory). Defaults to './public'
  *   @property {String} destination Path to copy static assets to (relative to destination directory). Defaults to '.'
- * @return {Function}
+ * @return {Function} A callback for metalsmith.
  */
 function assets(options) {
   options = merge({}, defaults, options);
 
   return function (files, metalsmith, done) {
-    var src = metalsmith.path(options.source);
-    var dest = options.destination;
+    const src = metalsmith.path(options.source);
+    const dest = options.destination;
 
-    debug('pulling files from '+src);
-    debug('and putting in '+dest);
+    debug('pulling files from ' + src);
+    debug('and putting in ' + dest);
 
+    // Copied almost line for line from https://github.com/segmentio/metalsmith/blob/master/lib/index.js
+    readdir(src, (err, arr) => {
+      if (err) {
+        return done(err);
+      }
 
-    // copied almost line for line from https://github.com/segmentio/metalsmith/blob/master/lib/index.js
-    readdir(src, function (err, arr) {
-      if (err) return done(err);
+      debug(arr.length + ' files found.');
 
-      debug(arr.length+' files found.');
-
-      each(arr, read, function (err) {
-        debug(arr.length+' files copied.');
+      each(arr, read, err => {
+        debug(arr.length + ' files copied.');
         done(err, files);
       });
     });
 
     function read(file, done) {
-      var name = path.join(dest, path.relative(src, file));
-      fs.stat(file, function (err, stats) {
-        if (err) return done(err);
-        fs.readFile(file, function (err, buffer) {
-          if (err) return done(err);
-          var file = {};
+      const name = path.join(dest, path.relative(src, file));
+      fs.stat(file, (err, stats) => {
+        if (err) {
+          return done(err);
+        }
 
-          file.contents = buffer;
+        fs.readFile(file, (err, buffer) => {
+          if (err) {
+            return done(err);
+          }
 
-          file.mode = Mode(stats).toOctal();
-          files[name] = file;
+          files[name] = {
+            contents: buffer,
+            mode: statMode(stats).toOctal()
+          };
           done();
         });
       });

@@ -1,26 +1,28 @@
 {
-  "name": "metalsmith-assets",
-  "version": "0.2.0",
+  "name": "metalsmith-assets-2",
+  "version": "2.0.0",
   "description": "Include static assets in your Metalsmith build",
   "main": "index.js",
   "scripts": {
-    "test": "make test"
+    "test": "mocha --reporter spec",
+    "posttest": "xo --space=2 index.js"
   },
   "dependencies": {
     "merge": "^1.2.1",
     "recursive-readdir": "^2.2.2",
-    "stat-mode": "^0.2.2",
+    "stat-mode": "^0.3.0",
     "debug": "^4.1.1",
-    "async": "^2.6.1"
+    "async": "^2.6.2"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
+    "assert-dir-equal": "^1.1.0",
     "metalsmith": "^2.3.0",
-    "assert-dir-equal": "^1.1.0"
+    "mocha": "^6.1.4",
+    "xo": "^0.24.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/treygriffith/metalsmith-assets"
+    "url": "https://github.com/RobLoach/metalsmith-assets-2"
   },
   "keywords": [
     "metalsmith",
@@ -34,9 +36,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/treygriffith/metalsmith-assets/issues"
+    "url": "https://github.com/RobLoach/metalsmith-assets-2/issues"
   },
-  "homepage": "https://github.com/treygriffith/metalsmith-assets",
+  "homepage": "https://github.com/RobLoach/metalsmith-assets-2",
   "files": [
     "index.js"
   ]
