@@ -1,4 +1,4 @@
-# metalsmith-assets
+# metalsmith-assets-2
 
   Include static assets in your Metalsmith build
 
