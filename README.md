@@ -4,16 +4,16 @@
 
 ## Installation
 
-    $ npm install metalsmith-assets
+    $ npm install metalsmith-assets-2
 
 ## CLI Usage
 
-Install via npm and then add the `metalsmith-assets` key to your `metalsmith.json` plugins with a source and destination directory, like so:
+Install via npm and then add the `metalsmith-assets-2` key to your `metalsmith.json` plugins with a source and destination directory, like so:
 
 ```json
 {
   "plugins": {
-    "metalsmith-assets": {
+    "metalsmith-assets-2": {
       "source": "./assets",
       "destination": "./assets"
     }
@@ -24,12 +24,12 @@ Install via npm and then add the `metalsmith-assets` key to your `metalsmith.jso
 * `source` defaults to `'./public'`
 * `destination` defaults to `'.'`
 
-## Javascript Usage
+## JavaScript Usage
 
   Pass `options` to the assets plugin and pass it to Metalsmith with the `use` method:
 
 ```js
-var assets = require('metalsmith-assets');
+var assets = require('metalsmith-assets-2');
 
 metalsmith.use(assets({
   source: './assets', // relative to the working directory
