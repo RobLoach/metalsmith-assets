@@ -3,7 +3,6 @@ const path = require('path');
 const debug = require('debug')('metalsmith-assets');
 const readdir = require('recursive-readdir');
 const statMode = require('stat-mode');
-const merge = require('merge');
 const {each} = require('async');
 
 /**
@@ -29,7 +28,10 @@ const defaults = {
  * @return {Function} A callback for metalsmith.
  */
 function assets(options) {
-  options = merge({}, defaults, options);
+  options = {
+    ...defaults,
+    ...(options ? options : {})
+  };
 
   return function (files, metalsmith, done) {
     const src = metalsmith.path(options.source);
