@@ -17,4 +17,14 @@ describe('metalsmith-assets', function(){
         done();
       });
   });
+
+  it('should copy assets with default options', function(done){
+    Metalsmith('test/fixture')
+      .use(assets())
+      .build(function(err){
+        if (err) return done(err);
+        equal('test/fixture/expected-default-options', 'test/fixture/build');
+        done();
+      });
+  });
 });

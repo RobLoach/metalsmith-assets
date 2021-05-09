@@ -8,11 +8,10 @@
     "posttest": "xo --space=2 index.js"
   },
   "dependencies": {
-    "merge": "^1.2.1",
-    "recursive-readdir": "^2.2.2",
-    "stat-mode": "^0.3.0",
+    "async": "^2.6.2",
     "debug": "^4.1.1",
-    "async": "^2.6.2"
+    "recursive-readdir": "^2.2.2",
+    "stat-mode": "^0.3.0"
   },
   "devDependencies": {
     "assert-dir-equal": "^1.1.0",
